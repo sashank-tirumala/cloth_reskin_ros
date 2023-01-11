@@ -1,0 +1,31 @@
+<launch>
+    <arg name="exp_name" default="dbg" /> 
+    <param name="exp_name" value="$(arg exp_name)" />
+
+    <arg name="num_auto_trials" default="15" /> 
+    <param name="num_auto_trials" value="$(arg num_auto_trials)" />
+
+    <!-- 0cloth, 1cloth, 2cloth -->
+    <arg name="cloth_type" default="0cloth" />
+    <param name="cloth_type" value="$(arg cloth_type)" />
+
+    <!-- <arg name="save_dir" default="/home/sashank/catkin_ws/src/tactilecloth/bagfiles/" /> -->
+    <arg name="save_dir" default="/media/ExtraDrive3/tactilecloth/bagfiles/" />
+    <param name="save_dir" value="$(arg save_dir)" />
+
+    <!-- [norub, vertrub, horzrub] -->
+    <arg name="grasp_type" default="vertrub" />
+    <param name="grasp_type" value="$(arg grasp_type)" />
+
+    <!-- [joy, auto] -->
+    <arg name="collection_mode" default="joy" /> 
+    <param name="collection_mode" value="$(arg collection_mode)" />
+
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find tactilecloth)/config.rviz" />
+    <node name="webcam" pkg="tactilecloth" type="webcam.py"/>
+    <node name="deltaz_strength" pkg="tactilecloth" type="lin_deltaz_strength.py" output="screen"/>
+    <node name="reskin" pkg="tactilecloth" type="reskin.py" output="screen"/>
+    <node name="bag_witer" pkg="tactilecloth" type="bag_writer.py" output="screen"/>
+    <node name="joy_node" pkg="joy" type="joy_node" output="screen"/>
+
+</launch>

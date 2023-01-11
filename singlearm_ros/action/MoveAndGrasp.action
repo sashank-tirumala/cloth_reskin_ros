@@ -1,0 +1,10 @@
+#goal definition
+std_msgs/String command
+std_msgs/Float32 height_diff
+std_msgs/Float32 slide_diff
+std_msgs/Float32 x_diff
+std_msgs/Float32 height_absolute
+---
+#result definition
+---
+#feedback

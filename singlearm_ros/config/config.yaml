@@ -1,0 +1,182 @@
+robot_app:
+  random: [0.23, 0.25]
+  openloop: [0.240, 0.234, 0.228]
+  # openloop_noise: 0.001 # for finetuning data collection only
+  openloop_noise: 0.000 # for finetuning data collection only
+  closedloop: [0.245, 0.245]
+  closedloop_noise: 0.000
+  increment: 0.002
+  imgclf_ready: False
+  motions: {
+    'slide_only': {
+      'type': 'discrete',
+      'actions': [
+        {
+          'diff_x': 0.0,
+          'diff_y': -0.04,
+          'diff_z': 0.0,
+        },
+      ],
+    },
+    'slide_lift': {
+      'type': 'discrete',
+      'actions': [
+        {
+          'diff_x': 0.0,
+          'diff_y': -0.04, # in
+          'diff_z': 0.0,
+        },
+        {
+          'diff_x': 0.0,
+          'diff_y': 0.0,
+          'diff_z': -0.02, # up
+        },
+      ],
+      'post_actions': [
+        {
+          'diff_x': 0.0,
+          'diff_y': -0.01,
+          'diff_z': 0.01,
+        },
+      ]
+    },
+    'circular': {
+      'type': 'discrete',
+      'actions': [
+        {
+          'diff_x': 0.0,
+          'diff_y': -0.03, # in - fixed
+          'diff_z': 0.0,
+        },
+        {
+          'diff_x': 0.0,
+          'diff_y': 0.0,
+          'diff_z': -0.02, # up - fixed
+        },
+      ],
+      'post_actions': [
+        # {
+        #   'diff_x': 0.0,
+        #   'diff_y': -0.01, # in
+        #   'diff_z': 0.0, # down
+        # },
+        {
+          'diff_x': 0.0,
+          'diff_y': 0.02, # out
+          'diff_z': 0.01, # down
+        },
+        {
+          'diff_x': 0.0,
+          'diff_y': -0.03, # in
+          'diff_z': 0.0, # down
+        },
+        {
+          'diff_x': 0.0,
+          'diff_y': 0.0,
+          'diff_z': -0.01 # up
+        },
+      ],
+    },
+    'circular1': {
+      'type': 'discrete',
+      'actions': [
+        {
+          'diff_x': 0.0,
+          'diff_y': -0.04, # in - fixed
+          'diff_z': 0.0,
+        },
+        {
+          'diff_x': 0.0,
+          'diff_y': 0.0,
+          'diff_z': -0.02, # up - fixed
+        },
+      ],
+      'post_actions': [
+        # {
+        #   'diff_x': 0.0,
+        #   'diff_y': -0.01, # in
+        #   'diff_z': 0.0, # down
+        # },
+        {
+          'diff_x': 0.0,
+          'diff_y': 0.0,
+          'diff_z': 0.015, # down
+        },
+        {
+          'diff_x': 0.0,
+          'diff_y': -0.01, # in
+          'diff_z': 0.0, # down
+        },
+        # {
+          # 'diff_x': 0.0,
+          # 'diff_y': 0.0,
+          # 'diff_z': -0.005 # up
+        # },
+      ],
+    },
+    # 'slide_lift1': {
+    #   'type': 'discrete',
+    #   'actions': [
+    #     {
+    #       'diff_x': 0.0,
+    #       'diff_y': -0.02, # in
+    #       'diff_z': 0.0,
+    #     },
+    #     {
+    #       'diff_x': 0.0,
+    #       'diff_y': 0.0,
+    #       'diff_z': -0.01, # up
+    #     },
+    #     {
+    #       'diff_x': 0.0,
+    #       'diff_y': -0.02,
+    #       'diff_z': 0.00, # down
+    #     },
+    #   ],
+    # },
+    # 'slide_lift_down_slide': {
+    #   'type': 'discrete',
+    #   'actions': [
+    #     {
+    #       'diff_x': 0.0,
+    #       'diff_y': -0.03, # in
+    #       'diff_z': 0.0,
+    #     },
+    #     {
+    #       'diff_x': 0.0,
+    #       'diff_y': 0.0,
+    #       'diff_z': -0.02, # up
+    #     },
+    #     {
+    #       'diff_x': 0.0,
+    #       'diff_y': -0.0,
+    #       'diff_z': 0.015, # down
+    #     },
+    #     {
+    #       'diff_x': 0.0,
+    #       'diff_y': -0.01, # in
+    #       'diff_z': 0.00
+    #     },
+    #   ],
+    # },
+    # 'slide_lift_slide': {
+    #   'type': 'discrete',
+    #   'actions': [
+    #     {
+    #       'diff_x': 0.0,
+    #       'diff_y': -0.03, # in
+    #       'diff_z': 0.0,
+    #     },
+    #     {
+    #       'diff_x': 0.0,
+    #       'diff_y': 0.0,
+    #       'diff_z': -0.02, # up
+    #     },
+    #     {
+    #       'diff_x': 0.0,
+    #       'diff_y': -0.01, # in
+    #       'diff_z': 0.01,
+    #     },
+    #   ],
+    # },
+  }

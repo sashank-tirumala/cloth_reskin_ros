@@ -1,0 +1,6 @@
+#goal definition
+std_msgs/String ask_response
+---
+#result definition
+---
+#feedback

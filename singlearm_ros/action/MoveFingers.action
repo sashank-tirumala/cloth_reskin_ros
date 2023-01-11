@@ -1,0 +1,6 @@
+#goal definition
+std_msgs/String command
+---
+#result definition
+---
+#feedback

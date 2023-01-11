@@ -1,0 +1,15 @@
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/0cloth_vertrub_auto/2022-02-10-13-09-05_0cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/0cloth_vertrub_auto/2022-02-10-13-09-12_0cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/0cloth_vertrub_auto/2022-02-10-13-09-19_0cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/0cloth_vertrub_auto/2022-02-10-13-09-27_0cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/0cloth_vertrub_auto/2022-02-10-13-09-34_0cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/1cloth_vertrub_auto/2022-02-10-13-05-59_1cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/1cloth_vertrub_auto/2022-02-10-13-06-06_1cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/1cloth_vertrub_auto/2022-02-10-13-06-14_1cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/1cloth_vertrub_auto/2022-02-10-13-06-21_1cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/1cloth_vertrub_auto/2022-02-10-13-06-28_1cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/2cloth_vertrub_auto/2022-02-10-12-54-51_2cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/2cloth_vertrub_auto/2022-02-10-12-54-58_2cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/2cloth_vertrub_auto/2022-02-10-12-55-05_2cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/2cloth_vertrub_auto/2022-02-10-12-55-13_2cloth_vertrub_auto
+/home/sashank/catkin_ws/src/tactilecloth/bagfiles/rub/2cloth_vertrub_auto/2022-02-10-12-55-20_2cloth_vertrub_auto

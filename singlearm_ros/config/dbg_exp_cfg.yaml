@@ -1,0 +1,10 @@
+exp_cfg:
+  num_trials_per_method: 10
+  methods: 
+    {
+      'name': 'closedloop-tactile'
+      'robot_app/policy': closedloop,
+      'robot_app/motion_key': 'slide_lift',
+      'robot_app/grasp_command': 'pinch'
+      'app/classifier_type': 'tactile',
+    }

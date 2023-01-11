@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <!-- <arg name="azure_tf_args" default="[0.0223, -0.3877, 0.8096, 0.67714, -0.67675, 0.20468, -0.20398]" /> -->
+  <!-- <arg name="azure_tf_args" default="[0.0247, -0.3900, 0.8049, -0.67576, 0.67801, -0.20411, 0.20494]" /> -->
+  
+  <!-- <rosparam param="w2c_pose" subst_value="True">$(arg azure_tf_args)</rosparam> -->
+  
+  <!-- <rosparam command="load" file="$(find cloth_manipulation)/config/sensor.yaml" /> -->
+  <rosparam command="load" file="$(find singlearm_ros)/config/sensor.yaml" />
+
+  <!-- <node pkg="tf" type="static_transform_publisher" name="azure_static_tf_2"  -->
+      <!-- args="0.266 0.478 0.647 -0.676 0.676 -0.206 -0.209 rgb_camera_link panda_1_link0 100" /> -->
+  <!-- <node pkg="tf" type="static_transform_publisher" name="azure_static_tf_1"  -->
+    <!-- args="$(arg azure_tf_args) panda_2_link0 rgb_camera_link 100" /> -->
+    <!-- args="0.271 0.449 0.670 -0.672 0.680 -0.204 -0.210 rgb_camera_link panda_1_link0 100" /> -->
+
+  <!-- <node pkg="tf" type="static_transform_publisher" name="azure_static_tf_2"  -->
+    <!-- args="0.0327 0.2620 0.8056 -0.67557 0.67637 -0.20560 0.20942 panda_1_link0 rgb_camera_link 100" /> -->
+
+  <!-- To make the tf warning go away, not important to get it accurate for our case -->
+  <!-- <node pkg="tf" type="static_transform_publisher" name="azure_static_tf_3"  -->
+      <!-- args="0 0 0 0 0 0 1 rgb_camera_link camera_base 100" /> -->
+  <!-- <node pkg="tf" type="static_transform_publisher" name="rs_static_tf" -->
+    <!-- args="0.029 0.057 -0.146 -0.033 -0.022 0.381 0.924 camera_color_optical_frame panda_2_link7 100" /> -->
+  
+  <!-- <node pkg="singlearm_ros" type="publish_eye_on_hand.py" name="publish" /> -->
+
+  <group ns="/camera/color" >
+      <node pkg="image_proc" type="image_proc" name="image_proc"/>
+    </group>
+  
+  <node pkg="singlearm_ros" type="publish_eye_on_hand.py" name="publish_eye_on_hand" />
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch" >
+    <arg name="enable_pointcloud" value="True" />
+    <arg name="align_depth" value="True" />
+  </include>
+
+  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/> -->
+  <!-- <arg name="robot" default="$(find franka_description)/robots/dual_panda_example.urdf.xacro" /> -->
+  <arg name="robot" default="$(find franka_description)/robots/panda_arm_hand.urdf.xacro" />
+  <param name="robot_description" command="xacro $(arg robot)" />
+
+  <!-- <node pkg="bimanual_ros" type="joint_state_republisher.py" name="joint_state_republisher" /> -->
+
+  <!-- <include file="$(find azure_kinect_ros_driver)/launch/driver.launch" >
+    <arg name="overwrite_robot_description" value="False" />
+    <arg name="fps" value="30" />
+    <arg name="color_resolution" value="720P" />
+    <arg name="depth_mode" value="NFOV_UNBINNED" />
+  </include> -->
+
+  <node name="$(anon rviz)" pkg="rviz" type="rviz" respawn="false"
+    args="-d $(find singlearm_ros)/config/config.rviz" output="screen" />
+  <!-- <node name="init_collision_geometries1" pkg="singlearm_ros" type="init_collision_geometries1.py" output="screen" /> -->
+</launch>

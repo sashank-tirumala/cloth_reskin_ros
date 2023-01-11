@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../bimanual_folding/singlearm_ros"
+		}
+	],
+	"settings": {}
+}

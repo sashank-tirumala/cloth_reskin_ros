@@ -1,0 +1,17 @@
+/bagfiles
+/config/*.pth
+/config/*.txt
+/videos
+/video_markers
+/classification_data
+/csv_data
+/scripts/*.pyc
+/.vscode
+/home/sashank/catkin_ws/src/tactilecloth/data_analysis/.ipynb_checkpoints
+
+
+# Daniel
+*.swp
+*.swo
+*.png
+*.pyc

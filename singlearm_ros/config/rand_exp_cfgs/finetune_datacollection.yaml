@@ -1,0 +1,68 @@
+robot_app:
+  random: [0.23, 0.25]
+  openloop: [0.240, 0.234, 0.228]
+  openloop_noise: 0.001 # for finetuning data collection only
+  closedloop: [0.245, 0.245]
+  closedloop_noise: 0.000
+exp_cfg:
+  num_trials_per_method: 30
+  methods: 
+    1cloth-openloop:
+      rosparams: [
+        ['robot_app/policy', 'openloop'],
+        ['robot_app/motion_key', 'slide_lift'],
+        ['robot_app/grasp_command', 'pinch'],
+        ['app/classifier_type', ''],
+        ['app/cloth_type', '1cloth'],
+      ]
+    2cloth-openloop:
+      rosparams: [
+        ['robot_app/policy', 'openloop'],
+        ['robot_app/motion_key', 'slide_lift'],
+        ['robot_app/grasp_command', 'pinch'],
+        ['app/classifier_type', ''],
+        ['app/cloth_type', '2cloth'],
+      ]
+    3cloth-openloop:
+      rosparams: [
+        ['robot_app/policy', 'openloop'],
+        ['robot_app/motion_key', 'slide_lift'],
+        ['robot_app/grasp_command', 'pinch'],
+        ['app/classifier_type', ''],
+        ['app/cloth_type', '3cloth'],
+      ]
+    # 2cloth-openloop:
+    #   rosparams: [
+    #     ['robot_app/policy', 'openloop'],
+    #     ['robot_app/motion_key', 'slide_lift'],
+    #     ['robot_app/grasp_command', 'pinch'],
+    #     ['app/classifier_type', ''],
+    #     ['app/cloth_type', '2cloth'],
+    #   ]
+
+    # 2cloth-random-tactile:
+    #   rosparams: [
+    #     ['robot_app/policy', 'random'],
+    #     ['robot_app/motion_key', 'slide_lift'],
+    #     ['robot_app/grasp_command', 'pinch'],
+    #     ['app/classifier_type', 'tactile'],
+    #     ['app/cloth_type', '2cloth'],
+    #   ]
+    
+
+    # 1cloth-complex-closedloop-tactile:
+    #   rosparams: [
+    #     ['robot_app/policy', 'closedloop'],
+    #     ['robot_app/motion_key', 'circular'],
+    #     ['robot_app/grasp_command', 'pinchmoverub'],
+    #     ['app/classifier_type', 'tactile'],
+    #     ['app/cloth_type', '1cloth'],
+    #   ]
+    # 2cloth-closedloop-tactile:
+    #   rosparams: [
+    #     ['robot_app/policy', 'closedloop'],
+    #     ['robot_app/motion_key', 'slide_lift'],
+    #     ['robot_app/grasp_command', 'pinch'],
+    #     ['app/classifier_type', 'tactile'],
+    #     ['app/cloth_type', '2cloth'],
+    #   ]

@@ -1,0 +1,399 @@
+{
+    "knn-2layer": [
+        {
+            "2cloth-openloop": {
+                "number of attempts for each trial": [
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1
+                ], 
+                "number of trials": 10, 
+                "success": 5, 
+                "failed to grasp": 5, 
+                "average number of attempts": 1.0, 
+                "classifier did not predict correctly": null
+            }
+        }, 
+        {
+            "2cloth-random-tactile": {
+                "number of attempts for each trial": [
+                    3, 
+                    1, 
+                    2, 
+                    6, 
+                    4, 
+                    1, 
+                    2, 
+                    1, 
+                    1, 
+                    1
+                ], 
+                "number of trials": 10, 
+                "success": 2, 
+                "failed to grasp": 3, 
+                "average number of attempts": 2.2, 
+                "classifier did not predict correctly": 5
+            }
+        }, 
+        {
+            "2cloth-closedloop-tactile": {
+                "number of attempts for each trial": [
+                    1, 
+                    3, 
+                    3, 
+                    8, 
+                    4, 
+                    5, 
+                    1, 
+                    1, 
+                    3, 
+                    5
+                ], 
+                "number of trials": 10, 
+                "success": 3, 
+                "failed to grasp": 1, 
+                "average number of attempts": 3.4, 
+                "classifier did not predict correctly": 6
+            }
+        }
+    ], 
+    "5class-knn": [
+        {
+            "1cloth-openloop": {
+                "number of attempts for each trial": [
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1
+                ], 
+                "number of trials": 10, 
+                "success": 7, 
+                "failed to grasp": 3, 
+                "average number of attempts": 1.0, 
+                "classifier did not predict correctly": null
+            }
+        }, 
+        {
+            "1cloth-random-tactile": {
+                "number of attempts for each trial": [
+                    10, 
+                    1, 
+                    4, 
+                    2, 
+                    2, 
+                    2, 
+                    2, 
+                    10, 
+                    3, 
+                    5
+                ], 
+                "number of trials": 10, 
+                "success": 7, 
+                "failed to grasp": 2, 
+                "average number of attempts": 4.1, 
+                "classifier did not predict correctly": 1
+            }
+        }, 
+        {
+            "1cloth-random-image": {
+                "number of attempts for each trial": [
+                    10, 
+                    10, 
+                    10, 
+                    10, 
+                    10, 
+                    10, 
+                    10, 
+                    10, 
+                    10, 
+                    10
+                ], 
+                "number of trials": 10, 
+                "success": null, 
+                "failed to grasp": 4, 
+                "average number of attempts": 10.0, 
+                "classifier did not predict correctly": 5
+            }
+        }, 
+        {
+            "1cloth-closedloop-tactile": {
+                "number of attempts for each trial": [
+                    3, 
+                    3, 
+                    3, 
+                    3, 
+                    10, 
+                    4, 
+                    4, 
+                    2, 
+                    3, 
+                    4
+                ], 
+                "number of trials": 10, 
+                "success": 9, 
+                "failed to grasp": null, 
+                "average number of attempts": 3.9, 
+                "classifier did not predict correctly": 1
+            }
+        }
+    ], 
+    "simplepolicy-generalization": [
+        {
+            "1cloth-openloop": {
+                "number of attempts for each trial": [
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1
+                ], 
+                "number of trials": 5, 
+                "success": 3, 
+                "failed to grasp": null, 
+                "average number of attempts": 1.0, 
+                "classifier did not predict correctly": null
+            }
+        }, 
+        {
+            "1cloth-random-tactile": {
+                "number of attempts for each trial": [
+                    10, 
+                    10, 
+                    10, 
+                    2, 
+                    4
+                ], 
+                "number of trials": 5, 
+                "success": 1, 
+                "failed to grasp": null, 
+                "average number of attempts": 7.2, 
+                "classifier did not predict correctly": null
+            }
+        }, 
+        {
+            "1cloth-random-image": {
+                "number of attempts for each trial": [
+                    10, 
+                    10
+                ], 
+                "number of trials": 2, 
+                "success": null, 
+                "failed to grasp": null, 
+                "average number of attempts": 10.0, 
+                "classifier did not predict correctly": null
+            }
+        }, 
+        {
+            "1cloth-closedloop-tactile": {
+                "number of attempts for each trial": [
+                    1, 
+                    2, 
+                    2, 
+                    1, 
+                    9
+                ], 
+                "number of trials": 5, 
+                "success": 3, 
+                "failed to grasp": null, 
+                "average number of attempts": 3.0, 
+                "classifier did not predict correctly": null
+            }
+        }
+    ], 
+    "simplepolicy-2layer": [
+        {
+            "2cloth-openloop": {
+                "number of attempts for each trial": [
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1
+                ], 
+                "number of trials": 5, 
+                "success": 3, 
+                "failed to grasp": null, 
+                "average number of attempts": 1.0, 
+                "classifier did not predict correctly": null
+            }
+        }, 
+        {
+            "2cloth-random-tactile": {
+                "number of attempts for each trial": [
+                    6, 
+                    4, 
+                    2, 
+                    4, 
+                    1
+                ], 
+                "number of trials": 5, 
+                "success": 3, 
+                "failed to grasp": null, 
+                "average number of attempts": 3.4, 
+                "classifier did not predict correctly": null
+            }
+        }, 
+        {
+            "2cloth-closedloop-tactile": {
+                "number of attempts for each trial": [
+                    5, 
+                    1, 
+                    1, 
+                    4, 
+                    4
+                ], 
+                "number of trials": 5, 
+                "success": null, 
+                "failed to grasp": null, 
+                "average number of attempts": 3.0, 
+                "classifier did not predict correctly": null
+            }
+        }
+    ], 
+    "simplepolicy-1layer": [
+        {
+            "1cloth-openloop": {
+                "number of attempts for each trial": [
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1
+                ], 
+                "number of trials": 5, 
+                "success": 4, 
+                "failed to grasp": null, 
+                "average number of attempts": 1.0, 
+                "classifier did not predict correctly": null
+            }
+        }, 
+        {
+            "1cloth-random-tactile": {
+                "number of attempts for each trial": [
+                    3, 
+                    1, 
+                    1, 
+                    2, 
+                    1
+                ], 
+                "number of trials": 5, 
+                "success": 3, 
+                "failed to grasp": null, 
+                "average number of attempts": 1.6, 
+                "classifier did not predict correctly": null
+            }
+        }, 
+        {
+            "1cloth-random-image": {
+                "number of attempts for each trial": [
+                    10, 
+                    10, 
+                    10, 
+                    10, 
+                    10
+                ], 
+                "number of trials": 5, 
+                "success": null, 
+                "failed to grasp": null, 
+                "average number of attempts": 10.0, 
+                "classifier did not predict correctly": null
+            }
+        }, 
+        {
+            "1cloth-closedloop-tactile": {
+                "number of attempts for each trial": [
+                    3, 
+                    4, 
+                    4, 
+                    5, 
+                    4
+                ], 
+                "number of trials": 5, 
+                "success": 5, 
+                "failed to grasp": null, 
+                "average number of attempts": 4.0, 
+                "classifier did not predict correctly": null
+            }
+        }
+    ], 
+    "5class-knn (copy)": [
+        {
+            "1cloth-openloop": {
+                "number of attempts for each trial": [
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1, 
+                    1
+                ], 
+                "number of trials": 6, 
+                "success": 4, 
+                "failed to grasp": 2, 
+                "average number of attempts": 1.0, 
+                "classifier did not predict correctly": null
+            }
+        }, 
+        {
+            "1cloth-random-tactile": {
+                "number of attempts for each trial": [
+                    10, 
+                    4, 
+                    2, 
+                    2, 
+                    10, 
+                    3, 
+                    5
+                ], 
+                "number of trials": 7, 
+                "success": 5, 
+                "failed to grasp": 2, 
+                "average number of attempts": 5.142857142857143, 
+                "classifier did not predict correctly": null
+            }
+        }, 
+        {
+            "1cloth-random-image": {
+                "number of attempts for each trial": [
+                    10
+                ], 
+                "number of trials": 1, 
+                "success": null, 
+                "failed to grasp": null, 
+                "average number of attempts": 10.0, 
+                "classifier did not predict correctly": 1
+            }
+        }, 
+        {
+            "1cloth-closedloop-tactile": {
+                "number of attempts for each trial": [
+                    3, 
+                    3, 
+                    3, 
+                    3, 
+                    4, 
+                    2, 
+                    4
+                ], 
+                "number of trials": 7, 
+                "success": 7, 
+                "failed to grasp": null, 
+                "average number of attempts": 3.142857142857143, 
+                "classifier did not predict correctly": null
+            }
+        }
+    ]
+}

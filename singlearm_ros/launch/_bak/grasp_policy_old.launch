@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <arg name="exp_name" default="dbg" /> 
+  <!-- <param name="exp_name" value="$(arg exp_name)" /> -->
+
+  <arg name="use_delta" default="true" />
+
+  <arg name="save_dir" value="/media/tweng/ExtraDrive2/fabric_touch/experiments/" />
+
+  <!-- manual, random, closedloop -->
+  <arg name="policy" default="manual" />
+  
+  <arg name="num_attempts" default="10" />
+  
+  <!-- pinch, horzrubpinch, vertrubpinch, scooppinch -->
+  <arg name="grasp_command" default="pinch" />
+  
+  <!-- <param name="grasp_cfg" value="$(find singlearm_ros)/config/config.yaml" /> -->
+  <rosparam command="load" file="$(find singlearm_ros)/config/config.yaml" />
+
+  <arg name="robot" default="$(find singlearm_ros)/config/panda_arm_delta.urdf.xacro" />
+  <param name="robot_description" command="xacro $(arg robot)" />
+
+  <group ns="/robot_app">
+    <param name="use_delta" value="$(arg use_delta)" />
+    <param name="policy" value="$(arg policy)" />
+    <param name="num_attempts" value="$(arg num_attempts)" />
+    <param name="grasp_command" value="$(arg grasp_command)" />
+  </group>
+  
+  <node name="run" pkg="singlearm_ros" type="run.py" output="screen" />
+  <node name="move_actionserver" pkg="singlearm_ros" type="move_actionserver.py" output="screen" />
+  <node name="init_collision_geometries" pkg="singlearm_ros" type="init_collision_geometries.py" output="screen" />
+  <node name="$(anon rviz)" pkg="rviz" type="rviz" respawn="false"
+    args="-d $(find singlearm_ros)/config/config.rviz" 
+    output="screen" />
+
+  <group if="$(arg use_delta)">
+    <include file="$(find tactilecloth)/launch/delta_reskin.launch">
+      <arg name="save_dir" value="$(arg save_dir)" />
+      <arg name="exp_name" value="$(arg exp_name)" />
+      <arg name="load_rviz" value="false" />
+    </include>
+  </group>
+
+</launch>

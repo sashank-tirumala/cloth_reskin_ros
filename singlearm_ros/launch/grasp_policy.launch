@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <arg name="robot" default="$(find singlearm_ros)/config/panda_arm_delta.urdf.xacro" />
+  <param name="robot_description" command="xacro $(arg robot)" />
+
+  <!-- %%% -->
+  <!-- %%% Delta arguments %%% -->
+  <!-- %%% -->
+  <arg name="exp_name" default="dbg_auto" /> 
+  <!-- <arg name="save_dir" default="/media/tweng/ExtraDrive2/fabric_touch/experiments" /> -->
+  <arg name="save_dir" default="/media/ExtraDrive3/fabric_touch/bagfiles" /> <!-- Comment out when running experiments-->
+  <arg name="cloth_type" default="0cloth" />
+  <!-- pinch, horzrubpinch, vertrubpinch, scooppinch -->
+  <arg name="grasp_type" default="norub" /> <!-- is this only for saving? -->
+    <!-- tactile, image, all -->
+  <arg name="classifier_type" default="tactile" />    
+  <arg name="collection_mode" default="auto_robot" /> 
+  <arg name="num_auto_trials" default="1" />
+  
+  <!-- <arg name="clf_dir_name" default="/media/ExtraDrive3/fabric_touch/classifiers/4classes_5knn1and2_edgeonly_all_95percent_svc" /> -->
+  <arg name="clf_dir_name" default="/media/ExtraDrive3/fabric_touch/classifiers/4classes_openloop_95percent_knn" />
+  <!-- <arg name="clf_dir_name" default="/media/ExtraDrive3/fabric_touch/classifiers/4classes_angledfeb25all_90percent_knn" /> -->
+  <!-- <arg name="clf_dir_name" default="/media/ExtraDrive3/fabric_touch/classifiers/3classes_angledfeb25all_90percent_knn" /> -->
+  <arg name="imclf_dir_name" default="/home/tweng/tactile_ws/src/tactile_cloth/config/ReSkin_img_ResNet_classify_finetune_noisymanual_clean_nclasses_5_seed_01.txt" />
+  <!-- <arg name="imclf_dir_name" default="/home/tweng/tactile_ws/src/tactile_cloth/config/ReSkin_img_ResNet_classify_angled_feb25_all_nclasses_4_seed_01.txt" /> -->
+  <group if="$(arg use_delta)">
+    <include file="$(find tactilecloth)/launch/delta_reskin.launch">
+        <arg name="exp_name" value="$(arg exp_name)" />
+        <arg name="save_dir" value="$(arg save_dir)" />    
+        <arg name="cloth_type" value="$(arg cloth_type)" />
+        <arg name="grasp_type" value="$(arg grasp_type)" />
+        <arg name="classifier_type" value="$(arg classifier_type)" />
+        <arg name="collection_mode" value="$(arg collection_mode)" /> 
+        <arg name="num_auto_trials" value="$(arg num_auto_trials)" />
+        <arg name="clf_dir_name" value="$(arg clf_dir_name)" />
+        <arg name="imclf_dir_name" value="$(arg imclf_dir_name)" />
+        <arg name="load_rviz" value="false" />
+    </include>
+  </group>
+
+  <!-- %%% -->
+  <!-- %%% Robot arguments %%% -->
+  <!-- %%% -->
+  <!-- run_type: run_random_exp, run_experiment, collect_data otherwise -->
+  <arg name="run_type" default="run_experiment" />
+  <rosparam command="load" file="$(find singlearm_ros)/config/config.yaml" />
+
+  <!-- folder name where randomized experiment will be saved -->
+  <arg name="rand_exp_dir" default="" />
+  <arg name="rand_exp_cfg" default="$(find singlearm_ros)/config/rand_exp_cfgs/simple_policy.yaml" />
+  <group if="$(eval arg('rand_exp_dir') == '')">
+    <!-- TODO make arg for rand exp cfg path -->
+    <rosparam command="delete" param="exp_cfg" />
+    <!-- <rosparam command="load" file="$(find singlearm_ros)/config/rand_exp_cfgs/1layer_simple.yaml" /> -->
+  </group>
+  <rosparam command="load" file="$(arg rand_exp_cfg)" />
+  <group ns="/exp_cfg">
+    <param name="rand_exp_dir" value="$(arg rand_exp_dir)" />
+  </group>
+  
+  <arg name="motion_key" default="slide_lift" />
+  <arg name="use_delta" default="true" />
+  <!-- check this for data collection -->
+  <arg name="slide_dist" default="-0.005" />
+  
+  <!-- %%% For data collection %%% -->
+  <arg name="num_data_points" default="15" />
+  <arg name="x_dist" default="-0.13" />
+
+  <!-- %%% For experiments %%%-->
+  <arg name="num_exp_attempts" default="10" />
+  <!-- pinch, horzrubpinch, vertrubpinch, scooppinch -->
+  <arg name="grasp_command" default="pinch" />
+  <!-- manual, random, openloop, closedloop -->
+  <arg name="policy" default="manual" />
+
+  <rosparam command="delete" param="robot_app" />
+  <group ns="/robot_app">
+    <param name="run_type" value="$(arg run_type)" />
+    <param name="motion_key" value="$(arg motion_key)" />
+    <param name="use_delta" value="$(arg use_delta)" />
+    <param name="slide_dist" value="$(arg slide_dist)" />
+    <param name="num_data_points" value="$(arg num_data_points)" />
+    <param name="x_dist" value="$(arg x_dist)" />
+    <param name="num_exp_attempts" value="$(arg num_exp_attempts)" />
+    <param name="grasp_command" value="$(arg grasp_command)" />
+    <param name="policy" value="$(arg policy)" />
+  </group>
+
+  <arg name="use_dslr" default="true" /> 
+  <param name="use_dslr" value="$(arg use_dslr)" />
+
+  <group if="$(eval arg('run_type') == 'run_experiment')">
+      <node name="run" pkg="singlearm_ros" type="run.py" output="screen" />
+  </group>
+  <group if="$(eval arg('run_type') == 'run_random_exp')">
+      <node name="run_rand_exp" pkg="singlearm_ros" type="run_rand_exp.py" output="screen" />
+  </group>
+  <group if="$(eval arg('run_type') == 'collect_data')">
+      <node name="data_collect_controller" pkg="singlearm_ros" type="data_collect_controller.py" output="screen" />
+  </group>
+  <node name="move_actionserver" pkg="singlearm_ros" type="move_actionserver.py" output="screen" />
+  <node name="init_collision_geometries" pkg="singlearm_ros" type="init_collision_geometries.py" output="screen" />
+  <node name="$(anon rviz)" pkg="rviz" type="rviz" respawn="false"
+    args="-d $(find singlearm_ros)/config/config.rviz" />
+</launch>
