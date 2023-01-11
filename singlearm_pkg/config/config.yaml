@@ -1,0 +1,42 @@
+robot_app:
+  random: [0.23, 0.25]
+  openloop: [0.240, 0.234, 0.228]
+  openloop_noise: 0.000 # for finetuning data collection only
+  closedloop: [0.245, 0.245]
+  closedloop_noise: 0.000
+  increment: 0.002
+  imgclf_ready: False
+  motions: {
+    'slide_only': {
+      'type': 'discrete',
+      'actions': [
+        {
+          'diff_x': 0.0,
+          'diff_y': -0.04,
+          'diff_z': 0.0,
+        },
+      ],
+    },
+    'slide_lift': {
+      'type': 'discrete',
+      'actions': [
+        {
+          'diff_x': 0.0,
+          'diff_y': -0.04, # in
+          'diff_z': 0.0,
+        },
+        {
+          'diff_x': 0.0,
+          'diff_y': 0.0,
+          'diff_z': -0.02, # up
+        },
+      ],
+      'post_actions': [
+        {
+          'diff_x': 0.0,
+          'diff_y': -0.01,
+          'diff_z': 0.01,
+        },
+      ]
+    },
+  }

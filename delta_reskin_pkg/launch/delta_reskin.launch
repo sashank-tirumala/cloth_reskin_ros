@@ -1,0 +1,56 @@
+<launch>
+    <arg name="exp_name" default="dbg" />
+    <arg name="num_auto_trials" default="45" /> 
+    <arg name="y_offset" default="0.0" /> 
+    <arg name="push_force" default="1.7" /> 
+    <arg name="load_rviz" default="true" /> 
+    <!-- 0cloth, 1cloth, 2cloth -->
+    <arg name="cloth_type" default="0cloth" />
+    <arg name="save_dir" default="/media/ExtraDrive4/fabric_touch/bagfiles" />
+
+    <arg name="clf_dir_name" default="/media/ExtraDrive3/fabric_touch/classifiers/4classes_90percent_data_25feb_auto_collect_franka_rf" />
+    <arg name="imclf_dir_name" default="/home/tweng/tactile_ws/src/tactile_cloth/config/ReSkin_img_ResNet_classify_angled_feb25_all_nclasses_5_seed_01.txt" />
+
+    <!-- [norub, vertrub, horzrub] -->
+    <arg name="grasp_type" default="norub" />
+    <!-- tactile, image -->
+    <arg name="classifier_type" default="tactile" /> 
+    <!-- Whether to rub with non-reskin top finger (finger 2) or finger 1-->
+    <arg name="is_finger_1" default="true" />
+    <arg name="random_grasp_pos" default="false" />
+    <!-- [joy, auto] -->
+    <arg name="collection_mode" default="joy" /> 
+
+    <rosparam command="delete" param="app" />
+    <group ns='app'>
+        <param name="exp_name" value="$(arg exp_name)" />
+        <param name="num_auto_trials" value="$(arg num_auto_trials)" />
+        <param name="y_offset" value="$(arg y_offset)" />    
+        <param name="push_force" value="$(arg push_force)" />
+        <param name="load_rviz" value="$(arg load_rviz)" />
+        <param name="cloth_type" value="$(arg cloth_type)" />
+        <param name="save_dir" value="$(arg save_dir)" />    
+        <param name="clf_dir_name" value="$(arg clf_dir_name)" />
+        <param name="imclf_dir_name" value="$(arg imclf_dir_name)" />
+        <param name="grasp_type" value="$(arg grasp_type)" />
+        <param name="classifier_type" value="$(arg classifier_type)" />
+        <param name="is_finger_1" value="$(arg is_finger_1)" />
+        <param name="random_grasp_pos" value="$(arg random_grasp_pos)" />
+        <param name="collection_mode" value="$(arg collection_mode)" />
+    </group>
+
+    <group if="$(arg load_rviz)">
+        <node type="rviz" name="rviz" pkg="rviz" args="-d $(find tactilecloth)/config.rviz" />
+    </group>
+    <node name="webcam" pkg="tactilecloth" type="webcam.py"/>
+    <node name="deltaz" pkg="tactilecloth" type="lin_deltaz.py" output="screen" required="true"/>
+    <group if="$(eval (arg('classifier_type') == 'tactile' or arg('classifier_type') == 'all'))">
+        <node name="reskin" pkg="tactilecloth" type="reskin.py" output="screen" required="true"/>
+        <node name="classifier" pkg="tactilecloth" type="classifier.py" output="screen" />
+    </group>
+    <group if="$(eval (arg('classifier_type') == 'image' or arg('classifier_type') == 'all'))">
+        <node name="imclassifier" pkg="tactilecloth" type="image_classifier_node.py" output="screen" />
+    </group>
+    <node name="bag_writer" pkg="tactilecloth" type="bag_writer.py" output="screen" required="true"/>
+
+</launch>

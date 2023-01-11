@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="delta">
+  <xacro:macro name="delta" params="connected_to:='' ns:='' rpy:='0 0 0' xyz:='0 0 0' ">
+    <xacro:unless value="${connected_to == ''}">
+      <joint name="${ns}_hand_joint" type="fixed">
+        <parent link="${connected_to}"/>
+        <child link="${ns}_hand"/>
+        <origin xyz="${xyz}" rpy="${rpy}"/>
+      </joint>
+    </xacro:unless>
+    <link name="${ns}_hand">
+      <visual>
+        <geometry>
+          <box size="0.05 0.11 0.285" />
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <box size="0.05 0.11 0.285" />
+        </geometry>
+      </collision>
+    </link>
+  </xacro:macro>
+</robot>

@@ -1,0 +1,17 @@
+/bagfiles
+/config/*.pth
+/config/*.txt
+/videos
+/video_markers
+/classification_data
+/csv_data
+/scripts/*.pyc
+*.vscode
+*.ipynb_checkpoints
+*.egg-info
+
+# Daniel
+*.swp
+*.swo
+*.png
+*.pyc
