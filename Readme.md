@@ -1,5 +1,7 @@
 # Learning to singulate layers of cloth code base
 
+*Disclaimer: This code depends on a specific hardware setup (Franka Control PC to control the Frankas and special hardware for the gripper), thus it will not work out of the box for your hardware setup. This code is best used as a reference.*
+
 This is the official repository to run the robot code for the IROS 2022 Paper : [Learning to Singulate Layers of Cloth using Tactile Feedback](https://sites.google.com/view/reskin-cloth?pli=1). 
 
 # Installation
