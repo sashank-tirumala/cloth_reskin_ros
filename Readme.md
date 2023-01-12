@@ -8,6 +8,6 @@ This is the official repository to run the robot code for the IROS 2022 Paper : 
 * Clone repo into catkin src `git clone  git@github.com:sashank-tirumala/LSLC_robot_code.git`
 * Clone `franka_ros` submodule: `git submodule update --init`
 * Build repo `catkin_make`
-## Setting up the code
+## Running the code
    
 To run specific commands look at the readme files inside ```singlearm_ros```, ```tactile_cloth``` folders
